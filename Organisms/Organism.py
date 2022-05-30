@@ -50,11 +50,10 @@ class Organism:
     def action(self, p: Position):
         pass
 
-    @abstractmethod
     def collision(self, a: Position, p: Position):
         if self.world_map[p.x][p.y].get_strength() < self.world_map[a.x][a.y].get_strength():
-            self.world_map[p.x][p.y] = self.world_map[a.y][a.y]
-            self.world_map[a.y][a.y] = None
+            self.world_map[p.x][p.y] = self.world_map[a.x][a.y]
+            self.world_map[a.x][a.y] = None
         else:
             self.world_map[a.x][a.y] = None
 

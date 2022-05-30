@@ -13,8 +13,8 @@ class Animal(Organism, ABC):
         self.world.delete_organism(old)
         self.world.add_organism(pos, self)
 
-    def attack(self, old:Position, pos:Position):
-        self.world_map[pos.x][pos.y].collsion(pos, old)
+    def attack(self, old: Position, pos: Position):
+        self.world_map[pos.x][pos.y].collision(pos, old)
 
     def action(self, pos: Position):
         old = Position(pos.x, pos.y)
@@ -22,15 +22,15 @@ class Animal(Organism, ABC):
         pos = super(Animal, self).get_random_position_nearby(pos)
         print(pos.x, " : ", pos.y)
         print()
-        if self.world_map[pos.x][pos.y] is None or old.__eq__(pos): # zwykly ruch na poste
+        if self.world_map[pos.x][pos.y] is None or old.__eq__(pos):  # zwykly ruch na poste
             self.basic_move(old, pos)
         elif self.world_map[pos.x][pos.y] is not None and self.world_map[pos.x][pos.y].get_species() == self.species:
-            #rozmnazanie
+            # rozmnazanie
             print("rozmnazanie " + self.world_map[pos.x][pos.y].get_species())
-            p = super().get_random_position_nearby(pos)
-            if p != pos and super().get_age()>0:
+            p = super().get_random_free_position_nearby(pos)
+            if p != pos and super().get_age() > 0:
                 self.world_map[p.x][p.y] = self.get_organism()
         else:
-            print("klepa: " + self.world_map[pos.x][pos.y].getSpieces() + " " + self.world_map[old.x][old.y].getSpieces())
+            print("klepa: " + self.world_map[pos.x][pos.y].get_species() + " " + self.world_map[old.x][
+                old.y].get_species())
             self.attack(old, pos)
-
