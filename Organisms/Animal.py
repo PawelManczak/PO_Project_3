@@ -18,9 +18,9 @@ class Animal(Organism, ABC):
 
     def action(self, pos: Position):
         old = Position(pos.x, pos.y)
-        print(pos.x, " : ", pos.y)
+        #print(pos.x, " : ", pos.y)
         pos = super(Animal, self).get_random_position_nearby(pos)
-        print(pos.x, " : ", pos.y)
+        #print(pos.x, " : ", pos.y)
         print()
         if self.world_map[pos.x][pos.y] is None or old.__eq__(pos):  # zwykly ruch na poste
             self.basic_move(old, pos)
