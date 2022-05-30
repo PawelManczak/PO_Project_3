@@ -1,7 +1,7 @@
 from abc import ABC
 
 from world import World
-from Animal import Animal
+from Organisms.Animal import Animal
 
 
 class Wolf(Animal, ABC):

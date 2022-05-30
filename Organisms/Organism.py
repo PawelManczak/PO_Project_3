@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from random import random
+from random import random, seed, randint
 
 from Position import Position
 
@@ -51,7 +51,7 @@ class Organism:
         pass
 
     @abstractmethod
-    def collision(self, a:Position, p:Position):
+    def collision(self, a: Position, p: Position):
         if self.world_map[p.x][p.y].get_strength() < self.world_map[a.x][a.y].get_strength():
             self.world_map[p.x][p.y] = self.world_map[a.y][a.y]
             self.world_map[a.y][a.y] = None
@@ -77,12 +77,53 @@ class Organism:
             self.world_map[a.y][a.y] = None
 
     def get_random_position_nearby(self, p):
+        opcje = set()
 
-        opcje = {}
-        while opcje.size() < 8:
+        while len(opcje) < 8:
+            los = randint(0, 7)
+            # print(los)
+            match los:
+                case 0:
+                    opcje.add(0)
+                    if p.x > 0 and p.y > 0:
+                        return Position(p.x - 1, p.y - 1)
+                case 1:
+                    opcje.add(1)
+                    if p.y > 0:
+                        return Position(p.x, p.y - 1)
+                case 2:
+                    opcje.add(2)
+                    if p.x < self.world.sizeX - 1 and p.y > 0:
+                        return Position(p.x + 1, p.y - 1)
+                case 3:
+                    opcje.add(3)
+                    if p.x > 0:
+                        return Position(p.x - 1, p.y)
+                case 4:
+                    opcje.add(4)
+                    if p.x < self.world.sizeX - 1:
+                        return Position(p.x + 1, p.y)
+                case 5:
+                    opcje.add(5)
+                    if p.x > 0 and p.y < self.world.sizeY - 1:
+                        return Position(p.x - 1, p.y + 1)
+                case 6:
+                    opcje.add(6)
+                    if p.y < self.world.sizeY - 1:
+                        return Position(p.x, p.y + 1)
+                case 7:
+                    opcje.add(7)
+                    if p.x < self.world.sizeX - 1 and p.y < self.world.sizeY - 1:
+                        return Position(p.x + 1, p.y + 1)
+        return p
 
-            los = random() % 8
+    def get_random_free_position_nearby(self, p):
 
+        opcje = set()
+
+        while len(opcje) < 8:
+            los = randint(0, 7)
+            # print(los)
             match los:
                 case 0:
                     opcje.add(0)
