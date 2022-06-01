@@ -37,7 +37,7 @@ class World:
         self.key = key
         maxInicjatywa = 7
         maxWiek = self.turn
-        for i in range(maxInicjatywa, 0, -1):
+        for i in range(maxInicjatywa, -1, -1):
             for j in range(maxWiek, 0, -1):
                 for y in range(0, self.sizeY):
                     for x in range(0, self.sizeX):

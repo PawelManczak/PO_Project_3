@@ -11,6 +11,8 @@ from Organisms.Animals.Fox import Fox
 from Organisms.Animals.Human import Human
 from Organisms.Animals.Sheep import Sheep
 from Organisms.Animals.Turtle import Turtle
+from Organisms.Plants.Dandelion import Dandelion
+from Organisms.Plants.Grass import Grass
 from Position import Position
 from Organisms.Animals.Wolf import Wolf
 from world import World
@@ -29,6 +31,8 @@ if __name__ == '__main__':
     fox = Fox(world)
     antelope = Antelope(world)
     human = Human(world)
+    dandelion = Dandelion(world)
+    grass = Grass(world)
 
     world.print_world()
 
@@ -39,6 +43,8 @@ if __name__ == '__main__':
     world.add_organism(Position(3, 2), fox)
     world.add_organism(Position(3, 3), antelope)
     world.add_organism(Position(6, 6), human)
+    world.add_organism(Position(7, 7), dandelion)
+    world.add_organism(Position(7, 6), grass)
 
     world.print_world()
 
