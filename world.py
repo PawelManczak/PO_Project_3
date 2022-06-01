@@ -1,5 +1,3 @@
-
-
 from Organisms.Organism import Organism
 from Position import Position
 
@@ -56,3 +54,12 @@ class World:
                     self.world_map[x][y].change_move()
                     self.world_map[x][y].increment_age()
         self.turn += 1
+
+    def get_size_x(self):
+        return self.sizeX
+
+    def get_size_y(self):
+        return self.sizeY
+
+    def get_key(self):
+        return self.key

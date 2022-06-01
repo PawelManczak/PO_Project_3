@@ -6,8 +6,8 @@ from Position import Position
 
 class Animal(Organism, ABC):
 
-    def __init__(self, species, strength, initiative, world, char):
-        super().__init__(species, strength, initiative, world, char)
+    def __init__(self, species, strength, initiative, world, char, color):
+        super().__init__(species, strength, initiative, world, char, color)
 
     def basic_move(self, old: Position, pos: Position):
         self.world.delete_organism(old)

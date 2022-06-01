@@ -1,4 +1,5 @@
 from abc import ABC
+from ctypes.wintypes import RGB
 
 from Organisms.Animal import Animal
 from Position import Position
@@ -7,7 +8,7 @@ from world import World
 
 class Fox(Animal, ABC):
     def __init__(self, w: World):
-        super(Fox, self).__init__("fox", 3, 7, w, 'l')
+        super(Fox, self).__init__("fox", 3, 7, w, 'l', RGB(255, 140, 0))
 
     def get_organism(self):
         return Fox(self.world)

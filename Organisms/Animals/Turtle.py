@@ -1,4 +1,5 @@
 from abc import ABC
+from ctypes.wintypes import RGB
 from random import randint
 
 from Position import Position
@@ -8,7 +9,7 @@ from Organisms.Animal import Animal
 
 class Turtle(Animal, ABC):
     def __init__(self, w: World):
-        super(Turtle, self).__init__("turtle", 2, 1, w, 'z')
+        super(Turtle, self).__init__("turtle", 2, 1, w, 'z', RGB(0,128,0))
 
     def get_organism(self):
         return Turtle(self.world)

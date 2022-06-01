@@ -6,7 +6,7 @@ from Position import Position
 
 class Organism:
 
-    def __init__(self, species, strength, initiative, world, char):
+    def __init__(self, species, strength, initiative, world, char, color):
         self.move = False
         self.species = species
         self.strength = strength
@@ -15,6 +15,7 @@ class Organism:
         self.world_map = world.get_map()
         self.age = 0
         self.char = char
+        self.color = color
 
     def get_move(self):
         return self.move
@@ -57,9 +58,8 @@ class Organism:
         else:
             self.world_map[a.x][a.y] = None
 
-    @abstractmethod
-    def color(self):
-        pass
+    def get_color(self):
+        return self.color
 
     @abstractmethod
     def get_organism(self):
