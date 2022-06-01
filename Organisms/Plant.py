@@ -11,8 +11,7 @@ class Plant(Organism, ABC):
         super(Plant, self).__init__(species, strength, 0, world, char, color)
 
     def action(self, p: Position):
-        rand = randint(0,2)
-        print("djkasasd")
+        rand = randint(0, 2)
         if rand == 0 and self.get_age() > 0:
 
             new_p = self.get_random_free_position_nearby(p)
