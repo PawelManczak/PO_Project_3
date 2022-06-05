@@ -8,7 +8,7 @@ from world import World
 
 class Fox(Animal, ABC):
     def __init__(self, w: World):
-        super(Fox, self).__init__("fox", 3, 7, w, 'l', RGB(255, 140, 0))
+        super(Fox, self).__init__("fox", 3, 7, w, 'l', "orange")
 
     def get_organism(self):
         return Fox(self.world)

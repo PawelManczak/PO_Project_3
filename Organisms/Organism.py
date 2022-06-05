@@ -1,6 +1,8 @@
 from abc import abstractmethod
 from random import random, seed, randint
 
+import static as static
+
 from Position import Position
 
 
@@ -47,6 +49,9 @@ class Organism:
     def set_move(self, value):
         self.move = value
 
+    def set_age(self, age):
+        self.age = age
+
     @abstractmethod
     def action(self, p: Position):
         pass
@@ -92,7 +97,7 @@ class Organism:
                         return Position(p.x, p.y - 1)
                 case 2:
                     opcje.add(2)
-                    if p.x < self.world.sizeX - 1 and p.y > 0:
+                    if p.x < self.world.get_size_x() - 1 and p.y > 0:
                         return Position(p.x + 1, p.y - 1)
                 case 3:
                     opcje.add(3)
@@ -100,19 +105,19 @@ class Organism:
                         return Position(p.x - 1, p.y)
                 case 4:
                     opcje.add(4)
-                    if p.x < self.world.sizeX - 1:
+                    if p.x < self.world.get_size_x() - 1:
                         return Position(p.x + 1, p.y)
                 case 5:
                     opcje.add(5)
-                    if p.x > 0 and p.y < self.world.sizeY - 1:
+                    if p.x > 0 and p.y < self.world.get_size_y() - 1:
                         return Position(p.x - 1, p.y + 1)
                 case 6:
                     opcje.add(6)
-                    if p.y < self.world.sizeY - 1:
+                    if p.y < self.world.get_size_y() - 1:
                         return Position(p.x, p.y + 1)
                 case 7:
                     opcje.add(7)
-                    if p.x < self.world.sizeX - 1 and p.y < self.world.sizeY - 1:
+                    if p.x < self.world.get_size_x() - 1 and p.y < self.world.get_size_y() - 1:
                         return Position(p.x + 1, p.y + 1)
         return p
 
@@ -134,7 +139,7 @@ class Organism:
                         return Position(p.x, p.y - 1)
                 case 2:
                     opcje.add(2)
-                    if p.x < self.world.sizeX - 1 and p.y > 0 and self.world_map[p.x + 1][p.y - 1] is None:
+                    if p.x < self.world.get_size_x() - 1 and p.y > 0 and self.world_map[p.x + 1][p.y - 1] is None:
                         return Position(p.x + 1, p.y - 1)
                 case 3:
                     opcje.add(3)
@@ -142,19 +147,19 @@ class Organism:
                         return Position(p.x - 1, p.y)
                 case 4:
                     opcje.add(4)
-                    if p.x < self.world.sizeX - 1 and self.world_map[p.x + 1][p.y] is None:
+                    if p.x < self.world.get_size_x() - 1 and self.world_map[p.x + 1][p.y] is None:
                         return Position(p.x + 1, p.y)
                 case 5:
                     opcje.add(5)
-                    if p.x > 0 and p.y < self.world.sizeY - 1 and self.world_map[p.x - 1][p.y + 1] is None:
+                    if p.x > 0 and p.y < self.world.get_size_y() - 1 and self.world_map[p.x - 1][p.y + 1] is None:
                         return Position(p.x - 1, p.y + 1)
                 case 6:
                     opcje.add(6)
-                    if p.y < self.world.sizeY - 1 and self.world_map[p.x][p.y + 1] is None:
+                    if p.y < self.world.get_size_y() - 1 and self.world_map[p.x][p.y + 1] is None:
                         return Position(p.x, p.y + 1)
                 case 7:
                     opcje.add(7)
-                    if p.x < self.world.sizeX - 1 and p.y < self.world.sizeY - 1:
+                    if p.x < self.world.get_size_x() - 1 and p.y < self.world.get_size_y() - 1:
                         if self.world_map[p.x + 1][p.y + 1] is None:
                             return Position(p.x + 1, p.y + 1)
         return p

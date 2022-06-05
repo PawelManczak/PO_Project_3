@@ -9,7 +9,7 @@ from world import World
 class Guarana(Plant, ABC):
 
     def __init__(self, w: World):
-        super(Guarana, self).__init__("Guarana", 0, w, 't', RGB(252, 43, 112))
+        super(Guarana, self).__init__("Guarana", 0, w, 't', "#FC2B70")
 
     def get_organism(self):
         return Guarana(self.world)

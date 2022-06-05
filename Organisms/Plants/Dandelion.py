@@ -10,7 +10,7 @@ class Dandelion(Plant, ABC):
     # mlecz
 
     def __init__(self, w: World):
-        super(Dandelion, self).__init__("Dandelion", 0, w, 'm', RGB(0, 1000, 200))
+        super(Dandelion, self).__init__("Dandelion", 0, w, 'm', "yellow")
 
     def action(self, p: Position):
         for x in range(3):

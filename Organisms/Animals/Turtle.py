@@ -24,6 +24,6 @@ class Turtle(Animal, ABC):
 
     def collision(self, p: Position, a: Position):
         if self.world_map[a.x][a.y].get_strength() >= 5:
-            super(Turtle, self).collision(p,a)
+            super(Turtle, self).collision(p, a)
         else:
             print("the turtle deflected the attack!")
