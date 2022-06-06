@@ -3,10 +3,8 @@ from Position import Position
 
 
 class World:
-    # window
-    key = None
-
     def __init__(self, size_x, size_y):
+        self.max_initiative = 0
         self.turn = 0
         self.size_x = size_x
         self.size_y = size_y
@@ -25,6 +23,7 @@ class World:
 
     def add_organism(self, p: Position, organism: Organism):
         self.world_map[p.x][p.y] = organism
+        self.max_initiative = max(self.max_initiative, organism.get_initiative())
 
     def delete_organism(self, p: Position):
         self.world_map[p.x][p.y] = None
@@ -34,16 +33,14 @@ class World:
 
     def take_a_turn(self, key):
         self.key = key
-        maxInicjatywa = 7
-        maxWiek = self.turn
-        for i in range(maxInicjatywa, -1, -1):
-            for j in range(maxWiek, 0, -1):
+        max_initiative = self.max_initiative
+        
+        for i in range(max_initiative, -1, -1):
+            for j in range(self.turn, 0, -1):
                 for y in range(0, self.size_y):
                     for x in range(0, self.size_x):
                         if self.world_map[x][y] is not None and self.world_map[x][y].get_age() == j and \
                                 self.world_map[x][y].get_initiative() == i and self.world_map[x][y].get_move():
-                            # if (self.world_map[x][y] instanceof Czlowiek)
-                            # System.out.println("czlowiek here");
                             self.world_map[x][y].change_move()
                             self.world_map[x][y]._action(Position(x, y))
 
@@ -105,10 +102,11 @@ class World:
         self.size_x = int(file.readline())
         self.size_y = int(file.readline())
         self.world_map = [[None for x in range(0, self.size_x)] for y in range(0, self.size_y)]
-
         for y in range(0, self.size_y):
             for x in range(0, self.size_x):
                 species = file.readline().strip()
+                p = Position(x, y)
+                
 
                 if species == "None":
                     self.world_map[x][y] = None
@@ -117,32 +115,32 @@ class World:
                     human.set_power_time(int(file.readline()))
                     human.set_strength(int(file.readline()))
                     human.set_age(int(file.readline()))
-                    self.world_map[x][y] = human
+                    self.add_organism(p, human)
                 else:
                     match species:
 
                         case "antelope":
-                            self.world_map[x][y] = Antelope(self)
+                            self.add_organism(p, Antelope(self))
                         case "Pine Borscht":
-                            self.world_map[x][y] = PineBorscht(self)
+                            self.add_organism(p, PineBorscht(self))
                         case "Guarana":
-                            self.world_map[x][y] = Guarana(self)
+                            self.add_organism(p, Guarana(self))
                         case "fox":
-                            self.world_map[x][y] = Fox(self)
+                            self.add_organism(p, Fox(self))
                         case "Dandelion":
-                            self.world_map[x][y] = Dandelion(self)
+                            self.add_organism(p, Dandelion(self))
                         case "sheep":
-                            self.world_map[x][y] = Sheep(self)
+                            self.add_organism(p, Sheep(self))
                         case "Grass":
-                            self.world_map[x][y] = Grass(self)
+                            self.add_organism(p, Grass(self))
                         case "Wolfberries":
-                            self.world_map[x][y] = Wolfberries(self)
+                            self.add_organism(p, Wolfberries(self))
                         case "wolf":
-                            self.world_map[x][y] = Wolf(self)
+                            self.add_organism(p, Wolf(self))
                         case "turtle":
-                            self.world_map[x][y] = Turtle(self)
+                            self.add_organism(p, Turtle(self))
                         case "CyberSheep":
-                            self.world_map[x][y] = CyberSheep(self)
+                            self.add_organism(p, CyberSheep(self))
 
                 print(species)
         print("loaded")

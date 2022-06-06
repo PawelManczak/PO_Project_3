@@ -72,84 +72,84 @@ class Organism:
         return self.char
 
     def _get_random_position_nearby(self, p):
-        opcje = set()
+        options = set()
 
-        while len(opcje) < 8:
-            los = randint(0, 7)
-            # print(los)
-            match los:
+        while len(options) < 8:
+            randOpt = randint(0, 7)
+            # print(randOpt)
+            match randOpt:
                 case 0:
-                    opcje.add(0)
+                    options.add(0)
                     if p.x > 0 and p.y > 0:
                         return Position(p.x - 1, p.y - 1)
                 case 1:
-                    opcje.add(1)
+                    options.add(1)
                     if p.y > 0:
                         return Position(p.x, p.y - 1)
                 case 2:
-                    opcje.add(2)
+                    options.add(2)
                     if p.x < self.world.get_size_x() - 1 and p.y > 0:
                         return Position(p.x + 1, p.y - 1)
                 case 3:
-                    opcje.add(3)
+                    options.add(3)
                     if p.x > 0:
                         return Position(p.x - 1, p.y)
                 case 4:
-                    opcje.add(4)
+                    options.add(4)
                     if p.x < self.world.get_size_x() - 1:
                         return Position(p.x + 1, p.y)
                 case 5:
-                    opcje.add(5)
+                    options.add(5)
                     if p.x > 0 and p.y < self.world.get_size_y() - 1:
                         return Position(p.x - 1, p.y + 1)
                 case 6:
-                    opcje.add(6)
+                    options.add(6)
                     if p.y < self.world.get_size_y() - 1:
                         return Position(p.x, p.y + 1)
                 case 7:
-                    opcje.add(7)
+                    options.add(7)
                     if p.x < self.world.get_size_x() - 1 and p.y < self.world.get_size_y() - 1:
                         return Position(p.x + 1, p.y + 1)
         return p
 
     def _get_random_free_position_nearby(self, p):
 
-        opcje = set()
+        options = set()
 
-        while len(opcje) < 8:
-            los = randint(0, 7)
-            # print(los)
-            match los:
+        while len(options) < 8:
+            randOpt = randint(0, 7)
+            # print(randOpt)
+            match randOpt:
                 case 0:
-                    opcje.add(0)
+                    options.add(0)
                     if p.x > 0 and p.y > 0 and self.world_map[p.x - 1][p.y - 1] is None:
                         return Position(p.x - 1, p.y - 1)
                 case 1:
-                    opcje.add(1)
+                    options.add(1)
                     if p.y > 0 and self.world_map[p.x][p.y - 1] is None:
                         return Position(p.x, p.y - 1)
                 case 2:
-                    opcje.add(2)
+                    options.add(2)
                     if p.x < self.world.get_size_x() - 1 and p.y > 0 and self.world_map[p.x + 1][p.y - 1] is None:
                         return Position(p.x + 1, p.y - 1)
                 case 3:
-                    opcje.add(3)
+                    options.add(3)
                     if p.x > 0 and self.world_map[p.x - 1][p.y] is None:
                         return Position(p.x - 1, p.y)
                 case 4:
-                    opcje.add(4)
+                    options.add(4)
                     if p.x < self.world.get_size_x() - 1 and self.world_map[p.x + 1][p.y] is None:
                         return Position(p.x + 1, p.y)
                 case 5:
-                    opcje.add(5)
+                    options.add(5)
                     if p.x > 0 and p.y < self.world.get_size_y() - 1 and self.world_map[p.x - 1][p.y + 1] is None:
                         return Position(p.x - 1, p.y + 1)
                 case 6:
-                    opcje.add(6)
+                    options.add(6)
                     if p.y < self.world.get_size_y() - 1 and self.world_map[p.x][p.y + 1] is None:
                         return Position(p.x, p.y + 1)
                 case 7:
-                    opcje.add(7)
+                    options.add(7)
                     if p.x < self.world.get_size_x() - 1 and p.y < self.world.get_size_y() - 1:
                         if self.world_map[p.x + 1][p.y + 1] is None:
                             return Position(p.x + 1, p.y + 1)

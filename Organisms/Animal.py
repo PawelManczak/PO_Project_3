@@ -24,12 +24,12 @@ class Animal(Organism, ABC):
         if self.world_map[pos.x][pos.y] is None or old.__eq__(pos):  # zwykly ruch na poste
             self._basic_move(old, pos)
         elif self.world_map[pos.x][pos.y] is not None and self.world_map[pos.x][pos.y].get_species() == self.species:
-            # rozmnazanie
-            print("rozmnazanie " + self.world_map[pos.x][pos.y].get_species())
+            #breed
+            print("breed " + self.world_map[pos.x][pos.y].get_species())
             p = super()._get_random_free_position_nearby(pos)
             if p != pos and super().get_age() > 0:
                 self.world_map[p.x][p.y] = self.get_organism()
         else:
-            print("klepa: " + self.world_map[pos.x][pos.y].get_species() + " " + self.world_map[old.x][
+            print("fight: " + self.world_map[pos.x][pos.y].get_species() + " " + self.world_map[old.x][
                 old.y].get_species())
             self._attack(old, pos)

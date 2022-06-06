@@ -17,6 +17,7 @@ from Organisms.Plants.Wolfberries import Wolfberries
 from Organisms.Animals.Wolf import Wolf
 from Organisms.Animals.Turtle import Turtle
 from Organisms.Animals.CyberSheep import CyberSheep
+from Position import Position
 
 
 def print_map(world: world.World, screen, SIZE_OF_TILE):
@@ -46,12 +47,12 @@ def show_game(world: world.World):
     while True:
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
-                x, y = pygame.mouse.get_pos()
+                y, x = pygame.mouse.get_pos()
                 x = floor((x - SIZE_OF_TILE) / SIZE_OF_TILE)
                 y = floor((y - SIZE_OF_TILE) / SIZE_OF_TILE)
                 print(x, " ", y)
-                if x <= world.get_size_x() and y <= world.get_size_y():
-                    world.world_map[x][y] = show_menu_list(world)
+                if x < world.get_size_x() and y < world.get_size_y():
+                    world.add_organism(Position(x, y), show_menu_list(world))
                     show_game(world)
 
             if event.type == pygame.QUIT:

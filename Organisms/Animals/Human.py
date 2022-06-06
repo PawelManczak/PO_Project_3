@@ -8,7 +8,7 @@ from world import World
 
 class Human(Animal, ABC):
     def __init__(self, w: World):
-        super(Human, self).__init__("human", 5, 4, w, 'c', RGB(250,255,0))
+        super(Human, self).__init__("human", 5, 4, w, 'c', RGB(250, 255, 0))
         self.power_time = 0
 
     def get_organism(self):

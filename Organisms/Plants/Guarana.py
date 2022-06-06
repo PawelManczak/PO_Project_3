@@ -1,5 +1,4 @@
 from abc import ABC
-from ctypes.wintypes import RGB
 
 from Organisms.Plant import Plant
 from Position import Position
