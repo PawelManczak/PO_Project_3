@@ -20,7 +20,7 @@ class Human(Animal, ABC):
     def set_power_time(self, time):
         self.power_time = time
 
-    def action(self, position: Position):
+    def _action(self, position: Position):
         old = Position(position.x, position.y)
         print("strength: ", super().get_strength())
 
@@ -42,7 +42,7 @@ class Human(Animal, ABC):
         if old == position:
             return
         if self.world_map[position.x][position.y] is not None:
-            self.attack(old, position)
+            self._attack(old, position)
         else:
             self.world.delete_organism(old)
             self.world.add_organism(position, self)

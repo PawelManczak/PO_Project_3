@@ -1,11 +1,3 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-import sys
-
-import pygame
-
 from Organisms.Animals.Antelope import Antelope
 from Organisms.Animals.CyberSheep import CyberSheep
 from Organisms.Animals.Fox import Fox
@@ -22,12 +14,13 @@ from Organisms.Animals.Wolf import Wolf
 from Screen import show_game
 from world import World
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     SIZE_X: int = 20
     SIZE_Y: int = 8
 
     world = World(SIZE_Y, SIZE_X)
+
+    # default set
 
     wolf = Wolf(world)
     wolf2 = Wolf(world)
@@ -43,8 +36,6 @@ if __name__ == '__main__':
     pine_borscht = PineBorscht(world)
     cybersheep = CyberSheep(world)
 
-    ##world.print_world()
-
     world.add_organism(Position(0, 0), wolf)
     world.add_organism(Position(1, 1), sheep)
     world.add_organism(Position(2, 2), turtle)
@@ -57,7 +48,5 @@ if __name__ == '__main__':
     # world.add_organism(Position(2, 7), wolfberries)
     world.add_organism(Position(0, 7), pine_borscht)
     world.add_organism(Position(7, 7), cybersheep)
-
-    #world.print_world()
 
     show_game(world)

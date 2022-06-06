@@ -15,12 +15,12 @@ class PineBorscht(Plant, ABC):
     def get_organism(self):
         return PineBorscht(self.world)
 
-    def collision(self, p: Position, a: Position):
+    def _collision(self, p: Position, a: Position):
         print(self.world_map[a.x][a.y].get_species(), " ate Pine Borscht and die")
         self.world.delete_organism(p)
         self.world.delete_organism(a)
 
-    def action(self, p: Position):
+    def _action(self, p: Position):
         from Organisms.Animals.CyberSheep import CyberSheep
         if p.x > 0 and p.y > 0 \
                 and not isinstance(self.world_map[p.x - 1][p.y - 1], CyberSheep):

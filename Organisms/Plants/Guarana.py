@@ -14,8 +14,8 @@ class Guarana(Plant, ABC):
     def get_organism(self):
         return Guarana(self.world)
 
-    def collision(self, p: Position, a: Position):
+    def _collision(self, p: Position, a: Position):
         print("strength before eating guarana ", self.world_map[a.x][a.y].get_strength())
         self.world_map[a.x][a.y].set_strength(self.world_map[a.x][a.y].get_strength() + 3)
-        super().collision(p, a)
+        super()._collision(p, a)
         print("strength after eating guarana ", self.world_map[p.x][p.y].get_strength())

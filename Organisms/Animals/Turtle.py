@@ -14,16 +14,16 @@ class Turtle(Animal, ABC):
     def get_organism(self):
         return Turtle(self.world)
 
-    def action(self, pos: Position):
+    def _action(self, pos: Position):
         rand = randint(0, 1)
 
         if rand == 0:
-            super().action(pos)
+            super()._action(pos)
         else:
             print("the turtle is resting")
 
-    def collision(self, p: Position, a: Position):
+    def _collision(self, p: Position, a: Position):
         if self.world_map[a.x][a.y].get_strength() >= 5:
-            super(Turtle, self).collision(p, a)
+            super(Turtle, self)._collision(p, a)
         else:
             print("the turtle deflected the attack!")

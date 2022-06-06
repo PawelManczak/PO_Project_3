@@ -14,7 +14,7 @@ class Wolfberries(Plant, ABC):
     def get_organism(self):
         return Wolfberries(self.world)
 
-    def collision(self, p: Position, a: Position):
+    def _collision(self, p: Position, a: Position):
         print(self.world_map[a.x][a.y].get_species(), "ate wolfberries and die")
         self.world.delete_organism(p)
         self.world.delete_organism(a)

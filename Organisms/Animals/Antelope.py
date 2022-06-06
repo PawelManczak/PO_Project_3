@@ -14,19 +14,19 @@ class Antelope(Animal, ABC):
     def get_organism(self):
         return Antelope(self.world)
 
-    def collision(self, p: Position, a: Position):
+    def _collision(self, p: Position, a: Position):
         rand = randint(0, 1)
         if rand == 0:
-            super().collision(p, a)
+            super()._collision(p, a)
         else:
-            free_pos = super().get_random_free_position_nearby(p)
+            free_pos = super()._get_random_free_position_nearby(p)
             self.world_map[free_pos.x][free_pos.y] = self
             self.world_map[p.x][p.y] = self.world_map[a.x][a.y]
             self.world_map[a.x][a.y] = None
             print("anteleope has escaped")
 
-    def basic_move(self, old: Position, pos: Position):
+    def _basic_move(self, old: Position, pos: Position):
         self.world.delete_organism(old)
         self.world.add_organism(pos, self)
-        super(Antelope, self).action(pos)
+        super(Antelope, self)._action(pos)
 

@@ -11,7 +11,6 @@ class World:
         self.size_x = size_x
         self.size_y = size_y
         self.world_map = [[None for _ in range(0, size_y)] for _ in range(0, size_x)]
-        print("konstruktor swiata")
 
     def print_world(self):
         for y in range(0, self.size_y):
@@ -46,7 +45,7 @@ class World:
                             # if (self.world_map[x][y] instanceof Czlowiek)
                             # System.out.println("czlowiek here");
                             self.world_map[x][y].change_move()
-                            self.world_map[x][y].action(Position(x, y))
+                            self.world_map[x][y]._action(Position(x, y))
 
         for y in range(0, self.size_y):
             for x in range(0, self.size_x):

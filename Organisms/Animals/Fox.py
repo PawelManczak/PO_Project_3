@@ -17,4 +17,4 @@ class Fox(Animal, ABC):
         if self.world_map[old.x][old.y].get_strength() < self.world_map[pos.x][pos.y].get_strength():
             print("The fox resigned from attacking the stronger opponent")
         else:
-            self.world_map[pos.x][pos.y].collision(old, pos);
+            self.world_map[pos.x][pos.y]._collision(old, pos);

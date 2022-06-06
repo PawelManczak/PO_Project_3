@@ -1,7 +1,5 @@
 from abc import abstractmethod
-from random import random, seed, randint
-
-import static as static
+from random import randint
 
 from Position import Position
 
@@ -53,10 +51,10 @@ class Organism:
         self.age = age
 
     @abstractmethod
-    def action(self, p: Position):
+    def _action(self, p: Position):
         pass
 
-    def collision(self, a: Position, p: Position):
+    def _collision(self, a: Position, p: Position):
         if self.world_map[p.x][p.y].get_strength() < self.world_map[a.x][a.y].get_strength():
             self.world_map[p.x][p.y] = self.world_map[a.x][a.y]
             self.world_map[a.x][a.y] = None
@@ -73,14 +71,7 @@ class Organism:
     def get_char(self):
         return self.char
 
-    def collision(self, a: Position, p: Position):
-        if self.world_map[p.x][p.y].get_strength() < self.world_map[a.x][a.y].get_strength():
-            self.world_map[p.x][p.y] = self.world_map[a.x][a.y]
-            self.world_map[a.x][a.y] = None
-        else:
-            self.world_map[a.x][a.y] = None
-
-    def get_random_position_nearby(self, p):
+    def _get_random_position_nearby(self, p):
         opcje = set()
 
         while len(opcje) < 8:
@@ -121,7 +112,7 @@ class Organism:
                         return Position(p.x + 1, p.y + 1)
         return p
 
-    def get_random_free_position_nearby(self, p):
+    def _get_random_free_position_nearby(self, p):
 
         opcje = set()
 
