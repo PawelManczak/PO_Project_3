@@ -24,10 +24,10 @@ from world import World
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    SIZE_X: int = 8
+    SIZE_X: int = 20
     SIZE_Y: int = 8
 
-    world = World(SIZE_X, SIZE_Y)
+    world = World(SIZE_Y, SIZE_X)
 
     wolf = Wolf(world)
     wolf2 = Wolf(world)
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     pine_borscht = PineBorscht(world)
     cybersheep = CyberSheep(world)
 
-    world.print_world()
+    ##world.print_world()
 
     world.add_organism(Position(0, 0), wolf)
     world.add_organism(Position(1, 1), sheep)
@@ -58,6 +58,6 @@ if __name__ == '__main__':
     world.add_organism(Position(0, 7), pine_borscht)
     world.add_organism(Position(7, 7), cybersheep)
 
-    world.print_world()
+    #world.print_world()
 
     show_game(world)

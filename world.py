@@ -10,7 +10,7 @@ class World:
         self.turn = 0
         self.size_x = size_x
         self.size_y = size_y
-        self.world_map = [[None for x in range(0, size_x)] for y in range(0, size_y)]
+        self.world_map = [[None for _ in range(0, size_y)] for _ in range(0, size_x)]
         print("konstruktor swiata")
 
     def print_world(self):

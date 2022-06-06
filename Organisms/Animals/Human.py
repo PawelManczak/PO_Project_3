@@ -24,13 +24,13 @@ class Human(Animal, ABC):
         old = Position(position.x, position.y)
         print("strength: ", super().get_strength())
 
-        if self.world.get_key() == "UP" and position.y > 0:
+        if self.world.get_key() == "LEFT" and position.y > 0:
             position.y -= 1
-        elif self.world.get_key() == "DOWN" and position.y < self.world.get_size_y() - 1:
+        elif self.world.get_key() == "RIGHT" and position.y < self.world.get_size_y() - 1:
             position.y += 1
-        elif self.world.get_key() == "LEFT" and position.x > 0:
+        elif self.world.get_key() == "UP" and position.x > 0:
             position.x -= 1
-        elif self.world.get_key() == "RIGHT" and position.x < self.world.get_size_x() - 1:
+        elif self.world.get_key() == "DOWN" and position.x < self.world.get_size_x() - 1:
             position.x += 1
         elif self.world.get_key() == "POWER":
             if self.power_time == 0:

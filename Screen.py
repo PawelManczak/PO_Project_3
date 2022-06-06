@@ -21,9 +21,9 @@ from Organisms.Animals.CyberSheep import CyberSheep
 
 def print_map(world: world.World, screen, SIZE_OF_TILE):
     for y in range(0, world.get_size_y()):
-        for x in range(0, world.get_size_y()):
-            if world.world_map[y][x] is not None:
-                color = world.world_map[y][x].get_color()
+        for x in range(0, world.get_size_x()):
+            if world.world_map[x][y] is not None:
+                color = world.world_map[x][y].get_color()
                 pygame.draw.rect(screen, color, pygame.Rect((y + 1) * SIZE_OF_TILE,
                                                             (x + 1) * SIZE_OF_TILE, SIZE_OF_TILE,
                                                             SIZE_OF_TILE))
@@ -37,7 +37,7 @@ def show_game(world: world.World):
     pygame.init()
     screen = pygame.display.set_mode((1280, 720), 0, 32)
 
-    screen.fill("black")
+    screen.fill("dark gray")
     print("show_game")
     SIZE_OF_TILE = 50
     print_map(world, screen, SIZE_OF_TILE)
@@ -79,7 +79,7 @@ def show_game(world: world.World):
                 print_map(world, screen, SIZE_OF_TILE)
                 pygame.display.flip()
                 world.take_a_turn(key)
-                world.print_world()
+                #world.print_world()
 
 
 def show_menu_list(world: world.World):
